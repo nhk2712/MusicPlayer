@@ -1,0 +1,18 @@
+body{
+    background-color: lightgreen;
+    user-select: none;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: wrap;
+}
+
+#title,#artist{
+    color:white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin:10px;
+}
