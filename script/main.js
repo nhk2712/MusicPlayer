@@ -10,7 +10,6 @@ var loopIcon = document.getElementById('loopIcon')
 var value=-1
 var isLoop = false
 time.onchange = function(){ //Makes the music's current time be the same as the range's value
-    console.log(time.value)
     aud.currentTime = time.value
     curtime.innerText=secToMinStr(aud.currentTime)
     value=aud.currentTime
@@ -48,7 +47,7 @@ function unbar(){ //Play to pause
     play.src="icon/play.png"
 }
 
-volume.onchange = function(){ //Change the audio's volume
+volume.onmousemove = function(){ //Change the audio's volume
     aud.volume=volume.value/100
 }
 
