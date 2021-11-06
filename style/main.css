@@ -1,5 +1,5 @@
 body{
-    background-color: lightgreen;
+    background-color: white;
     user-select: none;
 }
 
@@ -8,11 +8,110 @@ body{
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    width: wrap;
+    width: fit-content;
+    background-color:lightgreen;
+    padding: 20px 50px 20px 50px;
+    margin: auto;
+    border-radius: 20px;
+    height:fit-content;
+    background-image: linear-gradient(lightyellow,lightgreen,cyan);
 }
 
 #title,#artist{
     color:white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin:10px;
+    margin:5px;
+}
+
+h1{
+    font-size:50px;
+}
+
+h3{
+    font-size:30px;
+}
+
+#time{
+    width:100%;
+    transform: translateY(-3px);
+}
+
+/*Thiết lập style cho ranger slider*/
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 7px;
+  border-radius: 5px;  
+  background:white;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+/*Thiết kế phần để kéo trượt trong rangerslider -- dùng -webkit- để chạy trên Chrome, Opera, Safari, Edge*/
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%; 
+  background: DodgerBlue;
+  cursor: pointer;
+}
+
+/*-moz- dùng để thiết kế rangerslider trên firefox nhé*/
+input[type="range"]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: DodgerBlue;
+  cursor: pointer;
+}
+
+#audtime{
+    display: flex;
+    width:100%;
+    justify-content:space-between;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:white;
+    font-size:20px;
+    margin:20px 0px 20px 0px;
+}
+
+#timerange{
+    width:60%;
+}
+
+#playBtn,#repeat{
+    background-color: transparent;
+    outline:none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#playBtn:active,#repeat:active{
+    transform: scale(0.8);
+}
+
+#menu{
+    display: flex;
+    width:100%;
+    justify-content:space-between;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px 0px 10px 0px;
+    color:white;
+    font-size:20px;
+}
+
+#volume{
+    transform: translateY(3px);
+}
+
+#repeat{
+    transform: translateY(-6px);
+}
+
+#loopIcon{
+    color:white;
 }
