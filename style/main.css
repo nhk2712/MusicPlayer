@@ -84,7 +84,7 @@ input[type="range"]::-moz-range-thumb {
     width:60%;
 }
 
-.control,#repeat{
+.control,#repeat,#playlistBtn,#closeList{
     background-color: transparent;
     outline:none;
     border: none;
@@ -92,14 +92,14 @@ input[type="range"]::-moz-range-thumb {
     transition: all 0.2s;
 }
 
-.control:active,#repeat:active{
+.control:active,#repeat:active,#playlistBtn:active,#closeList:active{
     transform: scale(0.8);
 }
 
 #menu{
     display: flex;
     width:100%;
-    justify-content:space-between;
+    justify-content:space-around;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 20px 0px 10px 0px;
     color:white;
@@ -111,11 +111,17 @@ input[type="range"]::-moz-range-thumb {
 }
 
 #repeat{
-    transform: translateY(-6px);
     display: flex;
     flex-direction: column;
     color:white;
     align-items: center;
+    width: 70px;
+    position: relative;
+    top:10px;
+}
+
+#playlistBtn{
+    width: 70px;
 }
 
 #loopIcon{
@@ -125,4 +131,91 @@ input[type="range"]::-moz-range-thumb {
 #control{
     display: flex;
     justify-content:space-between;
+}
+
+#playlist{
+    position: absolute;
+    z-index: 1;
+    top:7px;
+    background-color: lightgreen;
+    border-radius: 20px;
+    width: 340px;
+    height: 621px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding:20px 50px 20px 50px;
+    display:none;
+    overflow: auto;
+}
+
+@keyframes show{
+    0%{opacity:0}
+    100%{opacity:1}
+}
+
+@keyframes hide{
+    0%{opacity:1}
+    100%{opacity:0}
+}
+
+#listTitle{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.songTile{
+    width:100%;
+    transition:all 0.5s;
+    margin: 5px 0px 5px 0px;
+    border:none;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    padding: 5px 10px 3px 10px;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+}
+
+.songTile:active{
+    transform: scale(0.9);
+}
+
+.songInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    float:left;
+    transform: translateY(-3px);
+}
+
+.songArtwork{
+    width:50px;
+    float:left;
+}
+
+.songName{
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.songArtist{
+    font-size: 17px;
+}
+
+.isPlaying{
+    float:right;
+    padding: 10px 0px 10px 0px;
+}
+
+#closeList{
+    width:fit-content;
+    height:fit-content;
+    margin:auto;
+    margin-top:20px;
 }

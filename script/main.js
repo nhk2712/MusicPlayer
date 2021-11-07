@@ -16,6 +16,17 @@ var artwork = document.getElementById('artwork')
 var prev= document.getElementById('prev')
 var next= document.getElementById('next')
 
+var playlist= document.getElementById('playlist')
+
+var songTile = document.getElementsByClassName('songTile')
+var songArtwork = document.getElementsByClassName('songArtwork')
+var songName = document.getElementsByClassName('songName')
+var songArtist = document.getElementsByClassName('songArtist')
+var isPlaying = document.getElementsByClassName('isPlaying')
+
+var playlistBtn = document.getElementById('playlistBtn')
+var closeList = document.getElementById('closeList')
+
 const NONE = 0
 const CURRENT = 1
 const ALL = 2
@@ -50,6 +61,13 @@ function init() {
     artist.innerText = list[index].artist
     artwork.src = "data/artwork/" + list[index].artwork + ".jpg"
     container.style.backgroundColor = list[index].color
+    playlist.style.backgroundColor = list[index].color
+    play.src = "icon/play.png"
+
+    for (var i = 0; i < list.length; i++) {
+        if (i==index) isPlaying[i].style.visibility = "unset"
+        else isPlaying[i].style.visibility = "hidden"
+    }
 }
 
 time.onchange = function () { //Makes the music's current time be the same as the range's value
@@ -158,4 +176,32 @@ next.onclick = function () {
     else index++
     init()
     play.click()
+}
+
+for (var i=0; i<list.length; i++) {
+    songArtwork[i].src="data/artwork/"+ list[i].artwork+".jpg"
+    songName[i].innerText=list[i].name
+    songArtist[i].innerText=list[i].artist
+    songTile[i].value=i
+}
+
+for (var i=0; i<list.length; i++) {
+    songTile[i].onclick = function () {
+        index=this.value
+        init()
+        closeList.click()
+        play.click()
+    }
+}
+
+playlistBtn.onclick = function () {
+    playlist.style.animation="show 0.3s"
+    playlist.style.display="flex"
+}
+
+closeList.onclick = function () {
+    playlist.style.animation="hide 0.3s"
+    setTimeout(function () {
+        playlist.style.display="none"
+    },250)
 }
