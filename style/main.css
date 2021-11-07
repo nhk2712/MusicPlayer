@@ -1,7 +1,6 @@
 body{
     background-color: lightcyan;
     user-select: none;
-    /*background-image: linear-gradient(lightyellow,lightgreen,cyan);*/
 }
 
 #container{
@@ -113,6 +112,10 @@ input[type="range"]::-moz-range-thumb {
 
 #repeat{
     transform: translateY(-6px);
+    display: flex;
+    flex-direction: column;
+    color:white;
+    align-items: center;
 }
 
 #loopIcon{

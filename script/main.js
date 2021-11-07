@@ -7,6 +7,7 @@ var maxtime = document.getElementById('maxtime')
 var curtime = document.getElementById('curtime')
 var repeat = document.getElementById('repeat')
 var loopIcon = document.getElementById('loopIcon')
+var repType = document.getElementById('repType')
 
 var title = document.getElementById('title')
 var artist = document.getElementById('artist')
@@ -15,8 +16,11 @@ var artwork = document.getElementById('artwork')
 var prev= document.getElementById('prev')
 var next= document.getElementById('next')
 
+const NONE = 0
+const CURRENT = 1
+const ALL = 2
 var value
-var isLoop = false
+var isLoop = NONE
 
 var song1  = {
     name:"DotA",
@@ -108,8 +112,9 @@ aud.onended = function () {
     unbar()
     play.removeEventListener('click', firstPlayFunc)
     play.addEventListener('click', again)
-    if (isLoop) play.click()
-    else if (index!=list.length-1) next.click()
+    if (isLoop==CURRENT) play.click()
+    else if (isLoop==ALL) next.click()
+    else if (isLoop==NONE && index!=list.length-1) next.click()
 }
 
 function again() {
@@ -121,13 +126,23 @@ function again() {
 }
 
 repeat.onclick = function () {
-    if (!isLoop) {
-        isLoop = true;
+    if (isLoop==NONE) {
+        isLoop = CURRENT;
         loopIcon.style.color = "DodgerBlue"
+        repType.innerText="Current"
+        repType.style.color = "DodgerBlue"
+    }
+    else if (isLoop==CURRENT) {
+        isLoop = ALL
+        loopIcon.style.color = "DodgerBlue"
+        repType.innerText="All"
+        repType.style.color = "DodgerBlue"
     }
     else {
-        isLoop = false
+        isLoop = NONE
         loopIcon.style.color = "white"
+        repType.innerText="None"
+        repType.style.color = "white"
     }
 }
 
