@@ -1,6 +1,7 @@
 body{
-    background-color: white;
+    background-color: lightcyan;
     user-select: none;
+    /*background-image: linear-gradient(lightyellow,lightgreen,cyan);*/
 }
 
 #container{
@@ -9,12 +10,14 @@ body{
     justify-content: space-evenly;
     align-items: center;
     width: fit-content;
-    background-color:lightgreen;
     padding: 20px 50px 20px 50px;
     margin: auto;
     border-radius: 20px;
-    height:fit-content;
-    background-image: linear-gradient(lightyellow,lightgreen,cyan);
+    height:100%;
+}
+
+#container,#title,#artist,#artwork{
+    transition: all 0.5s;
 }
 
 #title,#artist{
@@ -82,7 +85,7 @@ input[type="range"]::-moz-range-thumb {
     width:60%;
 }
 
-#playBtn,#repeat{
+.control,#repeat{
     background-color: transparent;
     outline:none;
     border: none;
@@ -90,7 +93,7 @@ input[type="range"]::-moz-range-thumb {
     transition: all 0.2s;
 }
 
-#playBtn:active,#repeat:active{
+.control:active,#repeat:active{
     transform: scale(0.8);
 }
 
@@ -114,4 +117,9 @@ input[type="range"]::-moz-range-thumb {
 
 #loopIcon{
     color:white;
+}
+
+#control{
+    display: flex;
+    justify-content:space-between;
 }
