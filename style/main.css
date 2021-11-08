@@ -8,7 +8,7 @@ body{
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    width: fit-content;
+    width: 500px;
     padding: 20px 50px 20px 50px;
     margin: auto;
     border-radius: 20px;
@@ -139,24 +139,23 @@ input[type="range"]::-moz-range-thumb {
     top:7px;
     background-color: lightgreen;
     border-radius: 20px;
-    width: 340px;
+    width: 500px;
     height: 621px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding:20px 50px 20px 50px;
     display:none;
-    overflow: auto;
 }
 
 @keyframes show{
-    0%{opacity:0}
-    100%{opacity:1}
+    0%{opacity:0;transform: scale(1.1);}
+    100%{opacity:1;transform: scale(1);}
 }
 
 @keyframes hide{
-    0%{opacity:1}
-    100%{opacity:0}
+    0%{opacity:1;transform: scale(1);}
+    100%{opacity:0;transform: scale(1.1);}
 }
 
 #listTitle{
@@ -218,4 +217,9 @@ input[type="range"]::-moz-range-thumb {
     height:fit-content;
     margin:auto;
     margin-top:20px;
+}
+
+#tiles{
+    overflow: auto;
+    height:480px;
 }

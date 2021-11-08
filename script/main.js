@@ -1,3 +1,45 @@
+var song1  = {
+    name:"DotA",
+    dir:"dota",
+    artist:"Basshunter",
+    artwork:"basshunter",
+    color:"lightgreen"
+}
+
+var song2 = {
+    name:"Shivers",
+    dir:"shivers",
+    artist:"Ed Sheeran",
+    artwork:"sheeran",
+    color:"lightcoral"
+}
+
+var song3 = {
+    name:"Believer",
+    dir:"believer",
+    artist:"Imagine Dragons",
+    artwork:"believer",
+    color:"lightgrey"
+}
+
+var song4 = {
+    name:"Boten Anna",
+    dir:"boten",
+    artist:"Basshunter",
+    artwork:"basshunter",
+    color:"lightgreen"
+}
+
+var song5 = {
+    name:"Dragostea Din Tei",
+    dir:"dragostea",
+    artist:"O-Zone",
+    artwork:"dragostea",
+    color:"lightblue"
+}
+
+var list = [song1, song2, song3, song4, song5]
+
 var container = document.getElementById('container')
 var time = document.getElementById('time')
 var music = document.createElement('audio')
@@ -27,36 +69,23 @@ var isPlaying = document.getElementsByClassName('isPlaying')
 var playlistBtn = document.getElementById('playlistBtn')
 var closeList = document.getElementById('closeList')
 
+var tiles = document.getElementById('tiles')
+var tileContent = '<button class="songTile"><img class="songArtwork"><span class="songInfo"><span class="songName"></span><span class="songArtist"></span></span><span class="isPlaying"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-music-note" viewBox="0 0 16 16"><path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"/><path fill-rule="evenodd" d="M9 3v10H8V3h1z"/><path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"/></svg></span></button>'
+
 const NONE = 0
 const CURRENT = 1
 const ALL = 2
-var value
 var isLoop = NONE
 
-var song1  = {
-    name:"DotA",
-    dir:"dota",
-    artist:"Basshunter",
-    artwork:"basshunter",
-    color:"lightgreen"
-}
-
-var song2 = {
-    name:"Shivers",
-    dir:"shivers",
-    artist:"Ed Sheeran",
-    artwork:"sheeran",
-    color:"lightcoral"
-}
-
-var list = [song1, song2]
-
 var index = 0
+
+for (var i=0; i<list.length; i++) {
+    tiles.innerHTML+=tileContent
+}
 
 function init() {
     aud.src="data/song/" + list[index].dir + ".mp3"
     curtime.innerText = "0 : 00"
-    value = -1
     title.innerText = list[index].name
     artist.innerText = list[index].artist
     artwork.src = "data/artwork/" + list[index].artwork + ".jpg"
@@ -73,7 +102,6 @@ function init() {
 time.onchange = function () { //Makes the music's current time be the same as the range's value
     aud.currentTime = time.value
     curtime.innerText = secToMinStr(aud.currentTime)
-    value = aud.currentTime
 }
 
 //Initially, the audio is considered to be paused
@@ -94,8 +122,7 @@ init()
 var inter
 function bar() { //Pause to play
     inter = setInterval(function () { //Makes the range and string indicator be consistent to the audio playback
-        value++
-        time.value = value;
+        time.value = aud.currentTime;
         curtime.innerText = secToMinStr(aud.currentTime)
     }, 1000)
     aud.play()
@@ -136,7 +163,6 @@ aud.onended = function () {
 }
 
 function again() {
-    value = 0
     time.value = 0
     play.removeEventListener('click', again)
     play.addEventListener('click', firstPlayFunc)
