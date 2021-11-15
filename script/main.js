@@ -40,6 +40,16 @@ var song5 = {
 
 var list = [song1, song2, song3, song4, song5]
 
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+shuffleArray(list)
+
 var container = document.getElementById('container')
 var time = document.getElementById('time')
 var music = document.createElement('audio')
@@ -143,6 +153,9 @@ aud.onloadedmetadata = function () {
     time.max = this.duration
     maxtime.innerText = secToMinStr(aud.duration)
 }
+
+aud.onpause=unbar
+aud.onplaying=bar
 
 function secToMinStr(sec) {
     var min = Math.floor(sec / 60)
